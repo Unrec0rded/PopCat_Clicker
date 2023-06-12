@@ -5,18 +5,24 @@ from selenium.webdriver.common.by import By
 import json
 import time
 
+# Assign the path to chromedriver 
 path_to_chromedriver = 'chromedriver'
+# Create a service object for the chromedriver 
 service = Service(path_to_chromedriver)
+# Create an options object for Chrome 
 options = webdriver.ChromeOptions()
-path_to_chrome_binary = '/var/lib/flatpak/exports/bin/com.google.Chrome'
+# Assign the path to chrome binary 
+path_to_chrome_binary = '/var/lib/flatpak/exports/bin/com.google.Chrome' 
 options.binary_location = path_to_chrome_binary
-
+# Add arguments to the Chrome Options object 
 options.add_argument("--remote-debugging-port=6969")
 options.add_argument("--disable-dev-shm-using") 
 options.add_argument("--disable-extensions") 
 options.add_argument("--disable-gpu") 
+# Uncomment this line to start Chrome maximized 
 # options.add_argument("start-maximized") 
 options.add_argument("disable-infobars")
+# Create a driver object for Chrome 
 driver = webdriver.Chrome(service=service, options=options)
 
 driver.get('https://popcat.click')
